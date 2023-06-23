@@ -22,12 +22,7 @@ class RecipesViewModel {
     }
     
     func fetchData() {
-        guard let url = APIURL.recipes.value else {
-            print(CustomError.invalidURL)
-            return
-        }
-        
-        dataManager.getRecipesData(url: url) { [weak self] (result) in
+        dataManager.getRecipesData(url: APIURL.recipes.value) { [weak self] (result) in
             guard let self = self, let delegate = self.delegate else { return }
             
             switch result {
@@ -44,35 +39,44 @@ class RecipesViewModel {
         }
     }
     
+    //MARK: Tableview Methods
     func getNumberOfRows() -> Int {
         return recipeSearch.count
     }
-    
-    func getRecipe(for indexPath: IndexPath) -> Recipe? {
-        return recipeSearch[indexPath.row]
+        
+    func getRecipeID(for indexPath: IndexPath) -> String? {
+        return recipeSearch[indexPath.row].id
     }
 
-    func getCellName(for indexPath: IndexPath) -> String {
-        return recipeSearch[indexPath.row].name
-    }
-
-    //MARK: Removes all non lowercase alphanumerical strings in searchText and text
+    //MARK: Compresses And Matches Texts
     func getSearchResults(searchText: String) {
         if searchText.isEmpty {
             recipeSearch = recipes
             return
         }
         
-        let searchString = searchText.lowercased().filter {
-            ("a"..."z" ~= $0) || ("0"..."9" ~= $0)
-        }
+        let searchString = compressText(text: searchText)
         
         recipeSearch = recipes.filter({ recipe in
-            let newText = recipe.name.lowercased().filter {
-                ("a"..."z" ~= $0) || ("0"..."9" ~= $0)
-            }
+            let newText = compressText(text: recipe.name)
             
             return newText.contains(searchString)
         })
+    }
+    
+    //MARK: Converts String Into An Alphanumerical, Lowercased, Spaceless String
+    func compressText(text: String) ->  String {
+        return text.lowercased().filter {
+            ("a"..."z" ~= $0) || ("0"..."9" ~= $0)
+        }
+    }
+    
+    //MARK: Recipe Cell Methods
+    func getCellName(for indexPath: IndexPath) -> String {
+        return recipeSearch[indexPath.row].name
+    }
+    
+    func getCellImageURL(for indexPath: IndexPath) -> String {
+        return recipeSearch[indexPath.row].image
     }
 }

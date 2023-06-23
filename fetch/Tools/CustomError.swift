@@ -11,6 +11,7 @@ enum CustomError: Error {
     case noData
     case cellReuse
     case invalidURL
+    case decodeError
 }
 
 extension CustomError: LocalizedError {
@@ -22,6 +23,8 @@ extension CustomError: LocalizedError {
             return "Error: Unable to dequeue PersonalityTableViewCell"
         case .invalidURL:
             return "Error: Invalid URL"
+        case .decodeError:
+            return "Could not decode JSON"
         }
     }
 }

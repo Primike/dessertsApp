@@ -23,4 +23,13 @@ class RecipesCoordinator {
         
         navigationController.pushViewController(recipesListViewController, animated: true)
     }
+    
+    func goToRecipeDetails(id: String) {
+        let dataManager = RecipesDataManager()
+        let viewModel = RecipeDetailsViewModel(dataManager: dataManager, id: id)
+        let recipeDetailsViewController = RecipeDetailsViewController(viewModel: viewModel)
+        recipeDetailsViewController.coordinator = self
+        
+        navigationController.pushViewController(recipeDetailsViewController, animated: true)
+    }
 }

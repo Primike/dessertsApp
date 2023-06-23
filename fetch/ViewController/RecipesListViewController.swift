@@ -88,7 +88,7 @@ extension RecipesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        recipeCell.configure(name: viewModel.getCellName(for: indexPath))
+        recipeCell.configure(viewModel: viewModel, indexPath: indexPath)
         return recipeCell
     }
     
@@ -101,11 +101,11 @@ extension RecipesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let recipe = viewModel.getRecipe(for: indexPath), let coordinator = coordinator else {
+        guard let recipeID = viewModel.getRecipeID(for: indexPath), let coordinator = coordinator else {
             return
         }
         
-//        coordinator.didSelectRow(recipe: recipe)
+        coordinator.goToRecipeDetails(id: recipeID)
     }
 }
 

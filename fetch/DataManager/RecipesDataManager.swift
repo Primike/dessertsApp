@@ -8,24 +8,32 @@
 import Foundation
 
 protocol RecipesDataManaging {
-    func getRecipesData(url: URL, completion: @escaping (Result<Meals, Error>) -> Void)
+    func getRecipesData(url: URL?, completion: @escaping (Result<Meals, Error>) -> Void)
 }
 
-class RecipesDataManager: RecipesDataManaging {
+protocol RecipeDetailsDataManaging {
+    func getRecipeDetails(url: URL?, completion: @escaping (Result<MealDetails, Error>) -> Void)
+}
+
+class RecipesDataManager: RecipesDataManaging, RecipeDetailsDataManaging {
     
-    func getRecipesData(url: URL, completion: @escaping (Result<Meals, Error>) -> Void) {
-        fetchData(url: url, customError: .noData, completion: completion)
+    func getRecipesData(url: URL?, completion: @escaping (Result<Meals, Error>) -> Void) {
+        fetchData(url: url, completion: completion)
     }
     
-    private func fetchData<T: Decodable>(url: URL?, customError: CustomError, completion: @escaping (Result<T, Error>) -> Void) {
+    func getRecipeDetails(url: URL?, completion: @escaping (Result<MealDetails, Error>) -> Void) {
+        fetchData(url: url, completion: completion)
+    }
+
+    private func fetchData<T: Decodable>(url: URL?, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = url else {
-            completion(.failure(customError))
+            completion(.failure(CustomError.invalidURL))
             return
         }
 
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, _ in
             guard let data = data else {
-                completion(.failure(customError))
+                completion(.failure(CustomError.noData))
                 return
             }
             
@@ -33,7 +41,7 @@ class RecipesDataManager: RecipesDataManaging {
                 let results = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(results))
             } catch {
-                completion(.failure(customError))
+                completion(.failure(CustomError.decodeError))
             }
         }
         task.resume()
