@@ -21,18 +21,60 @@ class RecipeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(viewModel: RecipesViewModel, indexPath: IndexPath) {
-        textLabel?.numberOfLines = 0
-        imageView?.contentMode = .scaleAspectFit
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    lazy var image: UIImageView = {
+        var imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return imageView
+    }()
 
-        textLabel?.text = viewModel.getCellName(for: indexPath)
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.font = UIFont.italicSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+
+    func configure(viewModel: RecipeCellConfigurable, indexPath: IndexPath) {
+        titleLabel.text = viewModel.getCellName(for: indexPath)
         
         let placeholder = UIImage(named: "recipeimage")
         
         if let url = URL(string: viewModel.getCellImageURL(for: indexPath)) {
-            imageView?.kf.setImage(with: url, placeholder: placeholder)
+            image.kf.setImage(with: url, placeholder: placeholder)
         } else {
-            imageView?.image = placeholder
+            image.image = placeholder
         }
+        
+        layout()
+    }
+    
+    func layout() {
+        self.addSubview(stackView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(image)
+
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
+            
+            image.widthAnchor.constraint(equalToConstant: 100)
+        ])
     }
 }

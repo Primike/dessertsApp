@@ -9,9 +9,23 @@ import Foundation
 
 protocol RecipeViewModelDelegate: AnyObject {
     func didFinishFetch()
+    func didFailFetch()
 }
 
-class RecipesViewModel {
+protocol RecipeCellConfigurable {
+    func getCellName(for indexPath: IndexPath) -> String
+    func getCellImageURL(for indexPath: IndexPath) -> String
+}
+
+protocol RecipesViewModeling: RecipeCellConfigurable {
+    func fetchData()
+    func getNumberOfRows() -> Int
+    func getRecipeID(for indexPath: IndexPath) -> String?
+    func getSearchResults(searchText: String)
+    var delegate: RecipeViewModelDelegate? { get set }
+}
+
+class RecipesViewModel: RecipesViewModeling {
     private let dataManager: RecipesDataManaging
     private(set) var recipes = [Recipe]()
     private(set) var recipeSearch = [Recipe]()
@@ -36,12 +50,14 @@ class RecipesViewModel {
             case .success(let data):
                 self.recipes = data.meals
                 self.recipeSearch = data.meals
+                DispatchQueue.main.async {
+                    delegate.didFinishFetch()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
-            }
-            
-            DispatchQueue.main.async {
-                delegate.didFinishFetch()
+                DispatchQueue.main.async {
+                    delegate.didFailFetch()
+                }
             }
         }
     }

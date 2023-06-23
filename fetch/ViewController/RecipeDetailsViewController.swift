@@ -8,9 +8,14 @@
 import Foundation
 import UIKit
 
+struct RecipeDetailsConstants {
+    static let cellReuseIdentifier = "Cell"
+    static let tableViewTitle = "Ingredients"
+}
+
 class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDelegate {
     
-    let viewModel: RecipeDetailsViewModel
+    private var viewModel: RecipeDetailsViewModeling
     weak var coordinator: RecipesCoordinator?
     
     init(viewModel: RecipeDetailsViewModel) {
@@ -40,7 +45,7 @@ class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDeleg
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = viewModel.recipe?.name
+        label.text = viewModel.getTitle()
         label.textAlignment = .center
         label.font = UIFont.italicSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize)
         label.adjustsFontSizeToFitWidth = true
@@ -55,7 +60,7 @@ class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDeleg
         imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
         let placeholder = UIImage(named: "default")
         
-        if let url = URL(string: viewModel.recipe?.image ?? "") {
+        if let url = viewModel.getRecipeImageURL() {
             imageView.kf.setImage(with: url, placeholder: placeholder)
         } else {
             imageView.image = placeholder
@@ -67,7 +72,7 @@ class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDeleg
     lazy var typeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "\(viewModel.recipe?.area ?? "") \(viewModel.recipe?.category ?? "")"
+        label.text = viewModel.getDessertType()
         label.font = UIFont.italicSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
@@ -77,7 +82,7 @@ class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDeleg
     lazy var instructionsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = viewModel.recipe?.instructions
+        label.text = viewModel.getInstructions()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
@@ -108,24 +113,43 @@ class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDeleg
         button.backgroundColor = UIColor.brown
         button.tintColor = UIColor.white
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(sourceTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sourceButtonTapped), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        tableView.dataSource = self
-        tableView.delegate = self
         viewModel.delegate = self
         viewModel.fetchData()
     }
 
     func didFinishFetch() {
+        setup()
         layout()
     }
+    
+    func didFailFetch() {
+        showAlertWithAutoDismiss(message: CustomError.dataError.localizedDescription, duration: 1)
+    }
+    
+    func showAlertWithAutoDismiss(message: String, duration: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: {
+            alert.dismiss(animated: true, completion: nil)
+        })
+    }
         
+    func setup() {
+        view.backgroundColor = .systemBackground
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: RecipeDetailsConstants.cellReuseIdentifier)
+    }
+    
     func layout() {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
@@ -153,19 +177,13 @@ class RecipeDetailsViewController: UIViewController, RecipeDetailsViewModelDeleg
     }
     
     @objc func youtubeButtonTapped() {
-        guard let link = viewModel.recipe?.youtubeLink,
-              let url = URL(string: link) else {
-            return
-        }
+        guard let url = viewModel.getLink(type: .youtube) else { return }
 
         UIApplication.shared.open(url)
     }
     
-    @objc func sourceTapped() {
-        guard let link = viewModel.recipe?.source,
-              let url = URL(string: link) else {
-            return
-        }
+    @objc func sourceButtonTapped() {
+        guard let url = viewModel.getLink(type: .source) else { return }
 
         UIApplication.shared.open(url)
     }
@@ -178,7 +196,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecipeDetailsConstants.cellReuseIdentifier, for: indexPath)
         cell.textLabel?.text = viewModel.getCellText(for: indexPath)
         
         return cell
@@ -191,6 +209,6 @@ extension RecipeDetailsViewController: UITableViewDataSource {
 
 extension RecipeDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Ingredients"
+        return RecipeDetailsConstants.tableViewTitle
     }
 }

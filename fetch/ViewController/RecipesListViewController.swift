@@ -8,10 +8,14 @@
 import Foundation
 import UIKit
 
+struct RecipesListConstants {
+    static let navTitle = "Recipe List"
+}
+
 class RecipesListViewController: UIViewController, RecipeViewModelDelegate {
     
     weak var coordinator: RecipesCoordinator?
-    let viewModel: RecipesViewModel
+    private var viewModel: RecipesViewModeling
     
     init(viewModel: RecipesViewModel) {
         self.viewModel = viewModel
@@ -51,10 +55,23 @@ class RecipesListViewController: UIViewController, RecipeViewModelDelegate {
         layout()
     }
     
+    func didFailFetch() {
+        showAlertWithAutoDismiss(message: CustomError.dataError.localizedDescription, duration: 1)
+    }
+    
+    func showAlertWithAutoDismiss(message: String, duration: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: {
+            alert.dismiss(animated: true, completion: nil)
+        })
+    }
+
+
     private func setup() {
-        view.backgroundColor = .white
-        navigationItem.title = "Recipe List"
-        
+        view.backgroundColor = .systemBackground
+        navigationItem.title = RecipesListConstants.navTitle
 
         searchBar.delegate = self
         

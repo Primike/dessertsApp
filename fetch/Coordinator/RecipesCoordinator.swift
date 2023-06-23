@@ -11,7 +11,7 @@ import UIKit
 class RecipesCoordinator {
     var navigationController: UINavigationController
     
-    public required init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
@@ -24,6 +24,7 @@ class RecipesCoordinator {
         navigationController.pushViewController(recipesListViewController, animated: true)
     }
     
+    //MARK: Goes to details VC
     func goToRecipeDetails(id: String) {
         let dataManager = RecipesDataManager()
         let viewModel = RecipeDetailsViewModel(dataManager: dataManager, id: id)

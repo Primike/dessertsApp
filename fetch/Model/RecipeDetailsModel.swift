@@ -11,20 +11,20 @@ struct MealDetails: Decodable {
     let meals: [RecipeDetails]
 }
 
-protocol IngredientMeasurementKey: CodingKey, CaseIterable {}
-
 struct RecipeDetails: Decodable {
-    let name: String
-    let category: String
-    let area: String
-    let youtubeLink: String
-    let instructions: String
-    let image: String
-    var ingredients: [String?]
-    var measurements: [String?]
-    let source: String
+    let id: String?
+    let name: String?
+    let category: String?
+    let area: String?
+    let youtubeLink: String?
+    let instructions: String?
+    let image: String?
+    var ingredients: [String]
+    var measurements: [String]
+    let source: String?
 
     enum CodingKeys: String, CodingKey {
+        case id = "idMeal"
         case name = "strMeal"
         case category = "strCategory"
         case area = "strArea"
@@ -37,31 +37,32 @@ struct RecipeDetails: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        name = try container.decode(String.self, forKey: .name)
-        category = try container.decode(String.self, forKey: .category)
-        area = try container.decode(String.self, forKey: .area)
-        instructions = try container.decode(String.self, forKey: .instructions)
-        image = try container.decode(String.self, forKey: .image)
-        youtubeLink = try container.decode(String.self, forKey: .youtubeLink)
-        source = try container.decode(String.self, forKey: .source)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        name = try container.decodeIfPresent(String.self, forKey: .name)
+        category = try container.decodeIfPresent(String.self, forKey: .category)
+        area = try container.decodeIfPresent(String.self, forKey: .area)
+        instructions = try container.decodeIfPresent(String.self, forKey: .instructions)
+        image = try container.decodeIfPresent(String.self, forKey: .image)
+        youtubeLink = try container.decodeIfPresent(String.self, forKey: .youtubeLink)
+        source = try container.decodeIfPresent(String.self, forKey: .source)
         ingredients = try RecipeDetails.decodeIngredientsMeasurements(container: decoder.container(keyedBy: IngredientsKeys.self))
         measurements = try RecipeDetails.decodeIngredientsMeasurements(container: decoder.container(keyedBy: MeasurementsKeys.self))
     }
 
     static private func decodeIngredientsMeasurements<T: IngredientMeasurementKey>(container: KeyedDecodingContainer<T>) throws -> [String] {
-        var values: [String?] = Array(repeating: nil, count: container.allKeys.count)
-
+        var values: [String] = []
         for key in container.allKeys {
-            if let index = Int(key.stringValue.filter({ $0.isNumber })),
+            if let _ = Int(key.stringValue.filter({ $0.isNumber })),
                 let value = try container.decodeIfPresent(String.self, forKey: key),
                 !value.trimmingCharacters(in: .whitespaces).isEmpty {
-                values[index - 1] = value
+                values.append(value)
             }
         }
-        
-        return values.compactMap { $0 }
+        return values
     }
 }
+
+protocol IngredientMeasurementKey: CodingKey, CaseIterable {}
 
 extension RecipeDetails {
     enum IngredientsKeys: String, IngredientMeasurementKey {

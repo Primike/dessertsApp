@@ -12,6 +12,7 @@ enum CustomError: Error {
     case cellReuse
     case invalidURL
     case decodeError
+    case dataError
 }
 
 extension CustomError: LocalizedError {
@@ -25,6 +26,8 @@ extension CustomError: LocalizedError {
             return "Error: Invalid URL"
         case .decodeError:
             return "Could not decode JSON"
+        case .dataError:
+            return "Failed to get data"
         }
     }
 }

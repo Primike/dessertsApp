@@ -33,6 +33,8 @@
 		9E8325052A43D96C004DD52E /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8325042A43D96C004DD52E /* RecipeDetailsViewController.swift */; };
 		9E8325072A43D9A6004DD52E /* RecipeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8325062A43D9A6004DD52E /* RecipeDetailsViewModel.swift */; };
 		9E8325092A43DA6D004DD52E /* RecipeDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E8325082A43DA6D004DD52E /* RecipeDetails.json */; };
+		9EA0B8902A45EECB00ADBEF0 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0B88F2A45EECB00ADBEF0 /* DataCache.swift */; };
+		9EA0B8912A4600E600ADBEF0 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0B88F2A45EECB00ADBEF0 /* DataCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		9E8325042A43D96C004DD52E /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
 		9E8325062A43D9A6004DD52E /* RecipeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModel.swift; sourceTree = "<group>"; };
 		9E8325082A43DA6D004DD52E /* RecipeDetails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipeDetails.json; sourceTree = "<group>"; };
+		9EA0B88F2A45EECB00ADBEF0 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,7 @@
 			children = (
 				9E8324FA2A435988004DD52E /* CustomError.swift */,
 				9E8324FF2A435C6C004DD52E /* APIURL.swift */,
+				9EA0B88F2A45EECB00ADBEF0 /* DataCache.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -316,6 +320,7 @@
 				9E7369642A45271D004C32E5 /* RecipeViewModelTests.swift in Sources */,
 				9E73696E2A4527AB004C32E5 /* RecipeDetailsModel.swift in Sources */,
 				9E73696D2A4527A9004C32E5 /* RecipesModel.swift in Sources */,
+				9EA0B8912A4600E600ADBEF0 /* DataCache.swift in Sources */,
 				9E73696B2A45276A004C32E5 /* MockRecipeDataManager.swift in Sources */,
 				9E7369702A4527B0004C32E5 /* RecipeDetailsViewModel.swift in Sources */,
 				9E73696C2A452789004C32E5 /* RecipesDataManager.swift in Sources */,
@@ -327,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA0B8902A45EECB00ADBEF0 /* DataCache.swift in Sources */,
 				9E8324FB2A435988004DD52E /* CustomError.swift in Sources */,
 				9E8324F22A4357C5004DD52E /* RecipesViewModel.swift in Sources */,
 				9E8325002A435C6C004DD52E /* APIURL.swift in Sources */,
