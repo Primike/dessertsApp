@@ -12,7 +12,7 @@ protocol RecipeViewModelDelegate: AnyObject {
 }
 
 class RecipesViewModel {
-    private let dataManager: RecipesDataManager
+    private let dataManager: RecipesDataManaging
     private(set) var recipes = [Recipe]()
     private(set) var recipeSearch = [Recipe]()
     weak var delegate: RecipeViewModelDelegate?
@@ -21,6 +21,13 @@ class RecipesViewModel {
         self.dataManager = dataManager
     }
     
+    //MARK: Tests Init
+    init(dataManager: RecipesDataManager, recipes: [Recipe]) {
+        self.dataManager = dataManager
+        self.recipes = recipes
+        self.recipeSearch = recipes
+    }
+
     func fetchData() {
         dataManager.getRecipesData(url: APIURL.recipes.value) { [weak self] (result) in
             guard let self = self, let delegate = self.delegate else { return }

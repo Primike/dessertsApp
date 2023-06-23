@@ -14,13 +14,20 @@ protocol RecipeDetailsViewModelDelegate: AnyObject {
 
 class RecipeDetailsViewModel {
     
-    private let dataManager: RecipesDataManager
+    private let dataManager: RecipeDetailsDataManaging
     private let id: String
     weak var delegate: RecipeDetailsViewModelDelegate?
     var recipe: RecipeDetails?
 
     init(dataManager: RecipesDataManager, id: String) {
         self.dataManager = dataManager
+        self.id = id
+    }
+    
+    //MARK: Tests Init
+    init(dataManager: RecipesDataManager, recipe: RecipeDetails, id: String) {
+        self.dataManager = dataManager
+        self.recipe = recipe
         self.id = id
     }
     
