@@ -49,11 +49,11 @@ struct RecipeDetails: Decodable {
         measurements = try RecipeDetails.decodeIngredientsMeasurements(container: decoder.container(keyedBy: MeasurementsKeys.self))
     }
 
-    static private func decodeIngredientsMeasurements<T: IngredientMeasurementKey>(container: KeyedDecodingContainer<T>) throws -> [String] {
+    static private func decodeIngredientsMeasurements<T: CodingKey>(container: KeyedDecodingContainer<T>) throws -> [String] {
         var values: [String] = []
+        
         for key in container.allKeys {
-            if let _ = Int(key.stringValue.filter({ $0.isNumber })),
-                let value = try container.decodeIfPresent(String.self, forKey: key),
+            if let value = try container.decodeIfPresent(String.self, forKey: key),
                 !value.trimmingCharacters(in: .whitespaces).isEmpty {
                 values.append(value)
             }
