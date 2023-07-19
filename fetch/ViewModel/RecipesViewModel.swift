@@ -26,6 +26,7 @@ protocol RecipesViewModeling: RecipeCellConfigurable {
 }
 
 class RecipesViewModel: RecipesViewModeling {
+    
     private let dataManager: RecipesDataManaging
     private(set) var recipes = [Recipe]()
     private(set) var recipeSearch = [Recipe]()

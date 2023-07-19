@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		9E0966D02A448A9200775059 /* RecipeDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0966CF2A448A9200775059 /* RecipeDetailsModel.swift */; };
+		9E195E232A685BDA0019F0E8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E195E222A685BDA0019F0E8 /* DataCache.swift */; };
+		9E3FC2AF2A6475A500ECEE7E /* dessertsSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2AE2A6475A500ECEE7E /* dessertsSwiftUIApp.swift */; };
+		9E3FC2B12A6475A500ECEE7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2B02A6475A500ECEE7E /* ContentView.swift */; };
+		9E3FC2B32A6475A600ECEE7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E3FC2B22A6475A600ECEE7E /* Assets.xcassets */; };
+		9E3FC2B62A6475A600ECEE7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E3FC2B52A6475A600ECEE7E /* Preview Assets.xcassets */; };
+		9E3FC2C02A647F6800ECEE7E /* RecipesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8324F72A43589A004DD52E /* RecipesModel.swift */; };
+		9E3FC2C12A647F6B00ECEE7E /* RecipeDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0966CF2A448A9200775059 /* RecipeDetailsModel.swift */; };
+		9E3FC2C32A64811F00ECEE7E /* DessertDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2C22A64811F00ECEE7E /* DessertDataManager.swift */; };
+		9E3FC2C52A64DB4B00ECEE7E /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8324FA2A435988004DD52E /* CustomError.swift */; };
+		9E3FC2C72A64DC9000ECEE7E /* DessertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2C62A64DC9000ECEE7E /* DessertViewModel.swift */; };
+		9E3FC2C82A64DDDA00ECEE7E /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8324FF2A435C6C004DD52E /* APIURL.swift */; };
+		9E3FC2CA2A64DFBC00ECEE7E /* DessertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2C92A64DFBC00ECEE7E /* DessertListView.swift */; };
+		9E3FC2D42A65B9FF00ECEE7E /* DessertDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2D32A65B9FF00ECEE7E /* DessertDetailsView.swift */; };
+		9E3FC2D62A65D57600ECEE7E /* DessertDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FC2D52A65D57600ECEE7E /* DessertDetailsViewModel.swift */; };
 		9E7369642A45271D004C32E5 /* RecipeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7369632A45271D004C32E5 /* RecipeViewModelTests.swift */; };
 		9E73696B2A45276A004C32E5 /* MockRecipeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E73696A2A45276A004C32E5 /* MockRecipeDataManager.swift */; };
 		9E73696C2A452789004C32E5 /* RecipesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8324F42A435852004DD52E /* RecipesDataManager.swift */; };
@@ -49,6 +63,17 @@
 
 /* Begin PBXFileReference section */
 		9E0966CF2A448A9200775059 /* RecipeDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsModel.swift; sourceTree = "<group>"; };
+		9E195E222A685BDA0019F0E8 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
+		9E3FC2AC2A6475A500ECEE7E /* dessertsSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dessertsSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E3FC2AE2A6475A500ECEE7E /* dessertsSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dessertsSwiftUIApp.swift; sourceTree = "<group>"; };
+		9E3FC2B02A6475A500ECEE7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9E3FC2B22A6475A600ECEE7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9E3FC2B52A6475A600ECEE7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9E3FC2C22A64811F00ECEE7E /* DessertDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDataManager.swift; sourceTree = "<group>"; };
+		9E3FC2C62A64DC9000ECEE7E /* DessertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewModel.swift; sourceTree = "<group>"; };
+		9E3FC2C92A64DFBC00ECEE7E /* DessertListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListView.swift; sourceTree = "<group>"; };
+		9E3FC2D32A65B9FF00ECEE7E /* DessertDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailsView.swift; sourceTree = "<group>"; };
+		9E3FC2D52A65D57600ECEE7E /* DessertDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailsViewModel.swift; sourceTree = "<group>"; };
 		9E7369612A45271D004C32E5 /* fetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7369632A45271D004C32E5 /* RecipeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModelTests.swift; sourceTree = "<group>"; };
 		9E73696A2A45276A004C32E5 /* MockRecipeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecipeDataManager.swift; sourceTree = "<group>"; };
@@ -73,6 +98,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9E3FC2A92A6475A500ECEE7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E73695E2A45271D004C32E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +123,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E3FC2AD2A6475A500ECEE7E /* dessertsSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FC2C42A64813600ECEE7E /* Tools */,
+				9E3FC2BD2A647EBE00ECEE7E /* DataManager */,
+				9E3FC2BF2A647EC800ECEE7E /* ViewModel */,
+				9E3FC2BC2A647C3300ECEE7E /* View */,
+				9E3FC2BB2A647C1F00ECEE7E /* Files */,
+				9E3FC2AE2A6475A500ECEE7E /* dessertsSwiftUIApp.swift */,
+			);
+			path = dessertsSwiftUI;
+			sourceTree = "<group>";
+		};
+		9E3FC2B42A6475A600ECEE7E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FC2B52A6475A600ECEE7E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9E3FC2BB2A647C1F00ECEE7E /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FC2B42A6475A600ECEE7E /* Preview Content */,
+				9E3FC2B22A6475A600ECEE7E /* Assets.xcassets */,
+				9E3FC2B02A6475A500ECEE7E /* ContentView.swift */,
+			);
+			name = Files;
+			sourceTree = "<group>";
+		};
+		9E3FC2BC2A647C3300ECEE7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FC2C92A64DFBC00ECEE7E /* DessertListView.swift */,
+				9E3FC2D32A65B9FF00ECEE7E /* DessertDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9E3FC2BD2A647EBE00ECEE7E /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FC2C22A64811F00ECEE7E /* DessertDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		9E3FC2BF2A647EC800ECEE7E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FC2C62A64DC9000ECEE7E /* DessertViewModel.swift */,
+				9E3FC2D52A65D57600ECEE7E /* DessertDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9E3FC2C42A64813600ECEE7E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9E195E222A685BDA0019F0E8 /* DataCache.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		9E7369622A45271D004C32E5 /* fetchTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				9E8324D22A420517004DD52E /* fetch */,
+				9E3FC2AD2A6475A500ECEE7E /* dessertsSwiftUI */,
 				9E7369622A45271D004C32E5 /* fetchTests */,
 				9E8324D12A420517004DD52E /* Products */,
 			);
@@ -115,6 +213,7 @@
 			children = (
 				9E8324D02A420517004DD52E /* fetch.app */,
 				9E7369612A45271D004C32E5 /* fetchTests.xctest */,
+				9E3FC2AC2A6475A500ECEE7E /* dessertsSwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,6 +309,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9E3FC2AB2A6475A500ECEE7E /* dessertsSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E3FC2B92A6475A600ECEE7E /* Build configuration list for PBXNativeTarget "dessertsSwiftUI" */;
+			buildPhases = (
+				9E3FC2A82A6475A500ECEE7E /* Sources */,
+				9E3FC2A92A6475A500ECEE7E /* Frameworks */,
+				9E3FC2AA2A6475A500ECEE7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dessertsSwiftUI;
+			productName = dessertsSwiftUI;
+			productReference = 9E3FC2AC2A6475A500ECEE7E /* dessertsSwiftUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9E7369602A45271D004C32E5 /* fetchTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E7369692A45271D004C32E5 /* Build configuration list for PBXNativeTarget "fetchTests" */;
@@ -258,6 +374,9 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					9E3FC2AB2A6475A500ECEE7E = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					9E7369602A45271D004C32E5 = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 9E8324CF2A420517004DD52E;
@@ -285,11 +404,21 @@
 			targets = (
 				9E8324CF2A420517004DD52E /* fetch */,
 				9E7369602A45271D004C32E5 /* fetchTests */,
+				9E3FC2AB2A6475A500ECEE7E /* dessertsSwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9E3FC2AA2A6475A500ECEE7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E3FC2B62A6475A600ECEE7E /* Preview Assets.xcassets in Resources */,
+				9E3FC2B32A6475A600ECEE7E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E73695F2A45271D004C32E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,6 +439,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9E3FC2A82A6475A500ECEE7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E3FC2B12A6475A500ECEE7E /* ContentView.swift in Sources */,
+				9E3FC2C02A647F6800ECEE7E /* RecipesModel.swift in Sources */,
+				9E3FC2D42A65B9FF00ECEE7E /* DessertDetailsView.swift in Sources */,
+				9E3FC2D62A65D57600ECEE7E /* DessertDetailsViewModel.swift in Sources */,
+				9E3FC2C12A647F6B00ECEE7E /* RecipeDetailsModel.swift in Sources */,
+				9E3FC2C32A64811F00ECEE7E /* DessertDataManager.swift in Sources */,
+				9E3FC2C82A64DDDA00ECEE7E /* APIURL.swift in Sources */,
+				9E3FC2C72A64DC9000ECEE7E /* DessertViewModel.swift in Sources */,
+				9E195E232A685BDA0019F0E8 /* DataCache.swift in Sources */,
+				9E3FC2CA2A64DFBC00ECEE7E /* DessertListView.swift in Sources */,
+				9E3FC2AF2A6475A500ECEE7E /* dessertsSwiftUIApp.swift in Sources */,
+				9E3FC2C52A64DB4B00ECEE7E /* CustomError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E73695D2A45271D004C32E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,6 +507,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		9E3FC2B72A6475A600ECEE7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"dessertsSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = MDPY9LF665;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Primike.dessertsSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9E3FC2B82A6475A600ECEE7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"dessertsSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = MDPY9LF665;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Primike.dessertsSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9E7369672A45271D004C32E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -566,6 +772,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9E3FC2B92A6475A600ECEE7E /* Build configuration list for PBXNativeTarget "dessertsSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E3FC2B72A6475A600ECEE7E /* Debug */,
+				9E3FC2B82A6475A600ECEE7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9E7369692A45271D004C32E5 /* Build configuration list for PBXNativeTarget "fetchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
